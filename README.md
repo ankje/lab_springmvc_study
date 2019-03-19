@@ -12,5 +12,5 @@ https://www.cnblogs.com/wormday/p/8435617.html[https://www.cnblogs.com/wormday/p
 https://my.oschina.net/ankje/blog/3024616[https://my.oschina.net/ankje/blog/3024616]
 
 # 待解决的问题
-1.与数据库整合
-2.指定视图解析器后，如何使用绝对路经的视图文件
+1. 与数据库整合
+2. 指定视图解析器后，如何使用绝对路经的视图文件
