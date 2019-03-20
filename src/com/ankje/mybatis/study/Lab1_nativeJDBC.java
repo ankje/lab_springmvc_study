@@ -22,7 +22,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("native-jdbc")
-public class NativeJDBC {
+public class Lab1_nativeJDBC {
 
     @RequestMapping(value = {
         "","/"
