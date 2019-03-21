@@ -44,11 +44,11 @@ public class Lab1_nativeJDBC {
             //通过驱动管理类获取数据库链接
             connection =  DriverManager.getConnection("jdbc:mysql://192.168.112.135:3306/mybatis001?characterEncoding=utf-8", "root", "root");
             //定义sql语句 ?表示占位符
-            String sql = "select * from user where username = ?";
+            String sql = "select * from f_user where username = ?";
             //获取预处理statement
             preparedStatement = connection.prepareStatement(sql);
             //设置参数，第一个参数为sql语句中参数的序号（从1开始），第二个参数为设置的参数值
-            preparedStatement.setString(1, "wangwu");
+            preparedStatement.setString(1, "hello");
             //向数据库发出sql执行查询，查询出结果集
             resultSet =  preparedStatement.executeQuery();
 
