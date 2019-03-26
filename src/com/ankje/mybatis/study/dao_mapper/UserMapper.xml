@@ -76,4 +76,7 @@
         where id=#{id}
     </update>
 
+    <select id="findUserList" parameterType="com.ankje.mybatis.study.model.UserQueryVo" resultType="com.ankje.mybatis.study.model.UserCustom">
+        SELECT * FROM f_user WHERE realname like '%${userCustom.realname}%'  and username= #{userCustom.username}
+    </select>
 </mapper>
