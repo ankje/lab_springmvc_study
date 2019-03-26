@@ -1,10 +1,25 @@
 package com.ankje.mybatis.study.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
+
 public class User {
     private Integer id;
     private String username;
     private String realname;
     private String mobile;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    private Date birthday;
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
     public Integer getId() {
         return id;
@@ -45,6 +60,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", realname='" + realname + '\'' +
                 ", mobile='" + mobile + '\'' +
+                ", birthday=" + birthday +
                 '}';
     }
 }
