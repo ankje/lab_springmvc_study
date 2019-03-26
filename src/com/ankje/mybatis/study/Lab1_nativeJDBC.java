@@ -42,7 +42,7 @@ public class Lab1_nativeJDBC {
             Class.forName("com.mysql.jdbc.Driver");
 
             //通过驱动管理类获取数据库链接
-            connection =  DriverManager.getConnection("jdbc:mysql://192.168.112.135:3306/mybatis001?characterEncoding=utf-8", "root", "root");
+            connection =  DriverManager.getConnection("jdbc:mysql://192.168.112.135:3306/mybatis001?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull", "root", "root");
             //定义sql语句 ?表示占位符
             String sql = "select * from f_user where username = ?";
             //获取预处理statement

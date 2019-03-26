@@ -11,6 +11,7 @@
     <mvc:annotation-driven>
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <!--<property name="objectMapper" value="#{jsonUtil.mapper}"/>-->
                 <property name="objectMapper">
                     <bean class="com.fasterxml.jackson.databind.ObjectMapper">
                         <property name="dateFormat">
@@ -20,12 +21,13 @@
                         </property>
                     </bean>
                 </property>
-                <!--<property name="objectMapper" value="#{jsonUtil.mapper}"/>-->
-                <!--<property name="supportedMediaTypes">-->
-                    <!--<list>-->
-                        <!--<value>text/json;charset=UTF-8</value>-->
-                    <!--</list>-->
-                <!--</property>-->
+                <!--头部不需设置Content-Type:application/json也可访问-->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>text/plain;charset=UTF-8</value>
+                    </list>
+                </property>
                 <!--<property name="defaultCharset" value="utf-8"/>-->
             </bean>
         </mvc:message-converters>
