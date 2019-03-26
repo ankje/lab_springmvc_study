@@ -1,7 +1,7 @@
 package com.ankje.mybatis.study;
 
 import com.ankje.mybatis.study.model.User;
-import com.ankje.mybatis.study.model.UserMapper;
+import com.ankje.mybatis.study.dao_mapper.UserMapper;
 import com.ankje.util.Resp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

@@ -1,4 +1,6 @@
-package com.ankje.mybatis.study.model;
+package com.ankje.mybatis.study.dao_mapper;
+
+import com.ankje.mybatis.study.model.User;
 
 import java.util.List;
 
