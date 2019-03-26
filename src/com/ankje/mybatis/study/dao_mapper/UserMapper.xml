@@ -76,7 +76,18 @@
         where id=#{id}
     </update>
 
+    <!--输入映射-->
     <select id="findUserList" parameterType="com.ankje.mybatis.study.model.UserQueryVo" resultType="com.ankje.mybatis.study.model.UserCustom">
         SELECT * FROM f_user WHERE realname like '%${userCustom.realname}%'  and username= #{userCustom.username}
+    </select>
+
+    <!--输出映射-->
+    <resultMap id="userOutMapper" type="com.ankje.mybatis.study.model.UserCustom">
+            <id column="id_" property="id"/>
+            <result column="username_" property="username"/>
+            <result column="realname_" property="realname"/>
+    </resultMap>
+    <select id="findUserListOutMapper" parameterType="com.ankje.mybatis.study.model.UserQueryVo" resultMap="userOutMapper">
+        SELECT id id_,username username_,realname realname_,birthday FROM f_user WHERE realname like '%${userCustom.realname}%'  and username= #{userCustom.username}
     </select>
 </mapper>
