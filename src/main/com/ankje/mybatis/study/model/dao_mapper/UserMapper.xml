@@ -5,7 +5,7 @@
 <!-- namespace 命名空间，作用就是对sql进行分类化管理,理解为sql隔离
  注意：使用mapper代理方法开发，namespace有特殊重要的作用
  -->
-<mapper namespace="com.ankje.mybatis.study.dao_mapper.UserMapper">
+<mapper namespace="com.ankje.mybatis.study.model.dao_mapper.UserMapper">
     <!-- 在映射文件中配置很多sql语句 -->
     <!--需求:通过id查询用户表的记录 -->
     <!-- 通过select执行数据库查询
@@ -88,6 +88,16 @@
             <result column="realname_" property="realname"/>
     </resultMap>
     <select id="findUserListOutMapper" parameterType="com.ankje.mybatis.study.model.UserQueryVo" resultMap="userOutMapper">
-        SELECT id id_,username username_,realname realname_,birthday FROM f_user WHERE realname like '%${userCustom.realname}%'  and username= #{userCustom.username}
+        SELECT id id_,username username_,realname realname_,birthday FROM f_user
+        <where>
+            <if test="userCustom!=null">
+                <if test="userCustom.realname!=null and userCustom.realname!=''">
+                    and realname like '%${userCustom.realname}%'
+                </if>
+                <if test="userCustom.username!=null and userCustom.username!=''">
+                    and username= #{userCustom.username}
+                </if>
+            </if>
+        </where>
     </select>
 </mapper>

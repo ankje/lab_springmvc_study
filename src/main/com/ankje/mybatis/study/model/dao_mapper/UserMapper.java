@@ -1,4 +1,4 @@
-package com.ankje.mybatis.study.dao_mapper;
+package com.ankje.mybatis.study.model.dao_mapper;
 
 import com.ankje.mybatis.study.model.User;
 import com.ankje.mybatis.study.model.UserCustom;

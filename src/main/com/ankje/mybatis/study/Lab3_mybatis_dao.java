@@ -1,7 +1,7 @@
 package com.ankje.mybatis.study;
 
 import com.ankje.mybatis.study.model.User;
-import com.ankje.mybatis.study.dao_mapper.UserMapper;
+import com.ankje.mybatis.study.model.dao_mapper.UserMapper;
 import com.ankje.util.Resp;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -23,7 +23,7 @@ public class Lab3_mybatis_dao {
     private SqlSessionFactory sqlSessionFactory;
 
     public Lab3_mybatis_dao() throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab3/mybatisConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("lab3/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         this.sqlSessionFactory = sqlSessionFactory;
     }

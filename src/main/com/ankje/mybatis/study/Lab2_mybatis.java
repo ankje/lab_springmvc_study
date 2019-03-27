@@ -23,7 +23,7 @@ public class Lab2_mybatis {
     @ResponseBody
     @RequestMapping(value = {""},method = {RequestMethod.POST})
     public Map<String,Object> insert(@RequestBody User user) throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab2/mybatisConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("lab2/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         Integer affectNum = sqlSession.insert("test.insertUser",user);
@@ -41,7 +41,7 @@ public class Lab2_mybatis {
     @ResponseBody
     @RequestMapping(value = {"delete/{id}"},method = {RequestMethod.GET})
     public Map<String,Object> delete(@PathVariable("id") Integer id) throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab2/mybatisConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("lab2/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         Integer affectNum= sqlSession.delete("test.deleteUser",id);
@@ -59,7 +59,7 @@ public class Lab2_mybatis {
     @ResponseBody
     @RequestMapping(value = {""},method = {RequestMethod.PUT})
     public Map<String,Object> update(@RequestBody User user) throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab2/mybatisConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("lab2/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         Integer affectNum= sqlSession.update("test.updateUser",user);
@@ -77,7 +77,7 @@ public class Lab2_mybatis {
     @ResponseBody
     @RequestMapping(value = {"{id}"},method = {RequestMethod.GET})
     public User findById(@PathVariable("id") Integer id) throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab2/mybatisConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("lab2/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         User user = sqlSession.selectOne("test.findUserById",id);
@@ -88,7 +88,7 @@ public class Lab2_mybatis {
     @ResponseBody
     @RequestMapping(value = {"like/{name}"},method = {RequestMethod.GET})
     public List<User> findByName(@PathVariable("name") String name) throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab2/mybatisConfig.xml");
+        InputStream inputStream = Resources.getResourceAsStream("lab2/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         List<User> users = sqlSession.selectList("test.findUserByName",name);

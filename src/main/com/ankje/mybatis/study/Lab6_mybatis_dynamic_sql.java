@@ -1,6 +1,6 @@
 package com.ankje.mybatis.study;
 
-import com.ankje.mybatis.study.dao_mapper.UserMapper;
+import com.ankje.mybatis.study.model.dao_mapper.lab6.UserMapper;
 import com.ankje.mybatis.study.model.UserCustom;
 import com.ankje.mybatis.study.model.UserQueryVo;
 import org.apache.ibatis.io.Resources;
@@ -18,26 +18,24 @@ import java.io.InputStream;
 import java.util.List;
 
 @Controller
-@RequestMapping("lab5")
-public class Lab5_mybatis_output_mapper {
+@RequestMapping("lab6")
+public class Lab6_mybatis_dynamic_sql {
 
     private SqlSessionFactory sqlSessionFactory;
 
-    public Lab5_mybatis_output_mapper() throws IOException {
-        InputStream inputStream = Resources.getResourceAsStream("res/lab5/mybatisConfig.xml");
+    public Lab6_mybatis_dynamic_sql() throws IOException {
+        InputStream inputStream = Resources.getResourceAsStream("lab6/mybatisConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
     //*******查
     @ResponseBody
-    @RequestMapping(value = {"user_list"},method = {RequestMethod.POST})
-    public List<UserCustom> findUserList(@RequestBody UserCustom userCustom) throws Exception {
+    @RequestMapping(value = {"user_list_ids"},method = {RequestMethod.POST})
+    public List<UserCustom> findUserList(@RequestBody List<Integer> ids) throws Exception {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-        UserQueryVo userQueryVo = new UserQueryVo();
-        userQueryVo.setUserCustom(userCustom);
-        List<UserCustom> users= userMapper.findUserListOutMapper(userQueryVo);
+        List<UserCustom> users= userMapper.findUserListWhereForeach(new UserQueryVo().setIds(ids));
         sqlSession.close();
         return users;
     }
