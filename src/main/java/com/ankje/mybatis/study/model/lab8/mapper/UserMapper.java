@@ -94,4 +94,6 @@ public interface UserMapper {
      * @mbg.generated Fri Mar 29 13:43:46 GMT+08:00 2019
      */
     int updateByPrimaryKey(User record);
+
+    List<User> selectUsersBuyItems();
 }

@@ -119,6 +119,32 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <resultMap id="UsersBuyItemsMap" type="com.ankje.mybatis.study.model.lab8.po.User" extends="BaseResultMap">
+    <collection property="buyItems" ofType="com.ankje.mybatis.study.model.lab8.po.Items">
+      <id column="item_id" property="id"></id>
+      <result column="items_name" property="name"></result>
+      <result column="items_detail" property="detail"></result>
+      <result column="items_price" property="price"></result>
+    </collection>
+  </resultMap>
+  <select id="selectUsersBuyItems" resultMap="UsersBuyItemsMap">
+    SELECT
+      user.id,
+      user.username,
+      user.sex,
+      user.address,
+      items.id item_id,
+      items.name items_name,
+      items.detail items_detail,
+      items.price items_price
+    FROM
+      orders,
+      user,
+      orderdetail,
+      items
+    WHERE orders.user_id = user.id AND orderdetail.orders_id=orders.id AND orderdetail.items_id = items.id
+    group by `user`.id,items.id;
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
       WARNING - @mbg.generated

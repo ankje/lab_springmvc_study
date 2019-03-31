@@ -41,7 +41,7 @@ public class Lab8_mybatis_1toM {
     }
 }
 
-class MultWhereMap{
+ class MultWhereMap{
     private Orders orders;
     private User user;
     private Orderdetail orderdetail;
